@@ -51,12 +51,12 @@ class Api:
             res = dict(zip(books, auth_list))    
 
             return jsonify(res)
-            
+
         return        
 
     if __name__ == '__main__':
 
-        app.run(debug = True)
+        app.run()
 
 
     
