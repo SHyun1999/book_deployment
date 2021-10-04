@@ -6,6 +6,7 @@ import joblib
 class Api:
 
     app = Flask(__name__)
+    server = app.server
 
     @app.route('/RecommendBooks', methods=['POST'])
     def preds():
