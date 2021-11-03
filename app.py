@@ -18,13 +18,18 @@ def preds():
         idlist = joblib.load('idlist.pkl')
 
         book_list = []
+        rating_list = []
         book_id = df[df['title'] == feat_data[0]].index
         book_id = book_id[0]
 
         for newid in idlist[book_id]:
-            book_list.append(df.loc[newid].title)           
+            book_list.append(df.loc[newid].title)
+            rating_list.append(df.loc[newid].average_rating)
+            
 
-        return jsonify(book_list)
+        res = [book_list,rating_list]          
+
+        return jsonify(res)
 
     return        
 
@@ -39,16 +44,16 @@ def preds_books():
         df = pd.read_csv('books.csv',  error_bad_lines=False)
         idlist = joblib.load('idlist.pkl')
 
-        auth_list = []
         books=[]
+        rating_list = []
         auth_id = df[df['authors'] == feat_data[0]].index
         auth_id = auth_id[0]
 
         for newid in idlist[auth_id]:
-            auth_list.append(df.loc[newid].authors)
             books.append(df.loc[newid].title)
+            rating_list.append(df.loc[newid].average_rating)
             
-        res = dict(zip(books, auth_list))    
+        res = [books,rating_list]   
 
         return jsonify(res)
 
