@@ -27,7 +27,7 @@ def preds():
         for newid in idlist[book_id]:
             book_list.append(df.loc[newid].title)
             rating_list.append(df.loc[newid].average_rating)
-            pages_list.append(df.loc[newid].num_pages)
+            pages_list.append(df.loc[newid].ratings_count)
             lang_list.append(df.loc[newid].language_code)
             
 
@@ -58,7 +58,7 @@ def preds_books():
         for newid in idlist[auth_id]:
             books.append(df.loc[newid].title)
             rating_list.append(df.loc[newid].average_rating)
-            pages_list.append(df.loc[newid].num_pages)
+            pages_list.append(df.loc[newid].ratings_count)
             lang_list.append(df.loc[newid].language_code)
             
         res = [books,rating_list,pages_list,lang_list]   
